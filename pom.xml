@@ -203,23 +203,17 @@
     </dependencies>
     <configuration>
         <!-- <verbose>true</verbose>
-        <threads>1</threads>
         <jvmArgs>
         <arg>-Djava.security.manager=allow</arg>
         </jvmArgs> -->
+        <threads>6</threads>
         <targetClasses>
             <param>org.apache.commons.lang3.*</param>
         </targetClasses>
         <targetTests> 
             <param>org.apache.commons.lang3.*</param>            
         </targetTests>
-        <excludedTestClasses>
-            <param>org.apache.commons.lang3.function.ObjectsTest</param>
-            <param>org.apache.commons.lang3.reflect.FieldUtilsTest</param>
-            <param>org.apache.commons.lang3.time.Java15BugFastDateParserTest</param>
-            <param>org.apache.commons.lang3.time.FastDateParserTest</param>
-            <param>org.apache.commons.lang3.SystemPropertiesTest</param>
-        </excludedTestClasses>
+
     </configuration>
 </plugin>
         <!--  -->
