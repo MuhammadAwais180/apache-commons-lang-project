@@ -213,7 +213,10 @@
         <targetTests> 
             <param>org.apache.commons.lang3.*</param>            
         </targetTests>
-
+        <outputFormats>
+            <param>XML</param>
+            <param>html</param>
+        </outputFormats>
     </configuration>
 </plugin>
         <!--  -->
