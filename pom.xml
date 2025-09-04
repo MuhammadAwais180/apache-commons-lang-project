@@ -18,7 +18,8 @@
 <project
   xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+   https://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-parent</artifactId>
@@ -116,8 +117,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!-- project.build.outputTimestamp is managed by Maven plugins, see https://maven.apache.org/guides/mini/guide-reproducible-builds.html -->
     <project.build.outputTimestamp>2025-07-09T21:30:43Z</project.build.outputTimestamp>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <!--
        This is also  used to generate download_xxx file name.
        To override this when generating the download page:
@@ -188,6 +189,40 @@
             </rulesets>
           </configuration>
         </plugin>
+        <!--  -->
+<plugin>
+    <groupId>org.pitest</groupId>
+    <artifactId>pitest-maven</artifactId>
+    <version>1.16.2</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-junit5-plugin</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+    </dependencies>
+    <configuration>
+        <!-- <verbose>true</verbose>
+        <threads>1</threads>
+        <jvmArgs>
+        <arg>-Djava.security.manager=allow</arg>
+        </jvmArgs> -->
+        <targetClasses>
+            <param>org.apache.commons.lang3.*</param>
+        </targetClasses>
+        <targetTests> 
+            <param>org.apache.commons.lang3.*</param>            
+        </targetTests>
+        <excludedTestClasses>
+            <param>org.apache.commons.lang3.function.ObjectsTest</param>
+            <param>org.apache.commons.lang3.reflect.FieldUtilsTest</param>
+            <param>org.apache.commons.lang3.time.Java15BugFastDateParserTest</param>
+            <param>org.apache.commons.lang3.time.FastDateParserTest</param>
+            <param>org.apache.commons.lang3.SystemPropertiesTest</param>
+        </excludedTestClasses>
+    </configuration>
+</plugin>
+        <!--  -->
         <plugin>
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
