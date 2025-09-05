@@ -189,7 +189,10 @@
             </rulesets>
           </configuration>
         </plugin>
-        <!--  -->
+
+
+        <!-- My plugin for mutation coverage -->
+
 <plugin>
     <groupId>org.pitest</groupId>
     <artifactId>pitest-maven</artifactId>
@@ -213,13 +216,23 @@
         <targetTests> 
             <param>org.apache.commons.lang3.*</param>            
         </targetTests>
+        <excludedTestClasses>
+            <param>org.apache.commons.lang3.function.ObjectsTest</param>
+            <param>org.apache.commons.lang3.reflect.FieldUtilsTest</param>
+            <param>org.apache.commons.lang3.time.Java15BugFastDateParserTest</param>
+            <param>org.apache.commons.lang3.time.FastDateParserTest</param>
+            <param>org.apache.commons.lang3.SystemPropertiesTest</param>
+        </excludedTestClasses>
         <outputFormats>
             <param>XML</param>
             <param>html</param>
         </outputFormats>
     </configuration>
 </plugin>
-        <!--  -->
+
+        <!-- My plugin for mutation coverage ends here -->
+
+        
         <plugin>
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
