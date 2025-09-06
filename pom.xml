@@ -211,9 +211,9 @@
         </jvmArgs> -->
            <timeoutConst>4000</timeoutConst> <!-- in ms -->
            <timeoutFactor>2.0</timeoutFactor>
-           <threads>2</threads>
+           <threads>1</threads>
         <jvmArgs>
-            <param>-Xmx4g</param>
+            <param>-Xmx3g</param>
         </jvmArgs>
         <targetClasses>
             <param>org.apache.commons.lang3.*</param>
