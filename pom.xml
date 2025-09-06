@@ -213,7 +213,7 @@
            <timeoutFactor>2.0</timeoutFactor>
            <threads>1</threads>
         <jvmArgs>
-            <param>-Xmx3g</param>
+            <param>-Xmx4g</param>
         </jvmArgs>
         <targetClasses>
             <param>org.apache.commons.lang3.*</param>
