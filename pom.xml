@@ -205,34 +205,28 @@
         </dependency>
     </dependencies>
     <configuration>
-        <verbose>true</verbose>
-        <!-- <jvmArgs>
-        <arg>-Djava.security.manager=allow</arg>
-        </jvmArgs> -->
-           <!-- <timeoutConst>4000</timeoutConst> in ms -->
-           <!-- <timeoutFactor>2.0</timeoutFactor> -->
-           <!-- <threads>1</threads> -->
-        <jvmArgs>
-            <param>-Xmx4g</param>
-        </jvmArgs>
-        <targetClasses>
-            <param>org.apache.commons.lang3.*</param>
-        </targetClasses>
-        <targetTests> 
-            <param>org.apache.commons.lang3.*</param>            
-        </targetTests>
-        <excludedTestClasses>
-            <param>org.apache.commons.lang3.function.ObjectsTest</param>
-            <param>org.apache.commons.lang3.reflect.FieldUtilsTest</param>
-            <param>org.apache.commons.lang3.time.Java15BugFastDateParserTest</param>
-            <param>org.apache.commons.lang3.time.FastDateParserTest</param>
-            <param>org.apache.commons.lang3.SystemPropertiesTest</param>
-        </excludedTestClasses>
-        <outputFormats>
-            <param>XML</param>
-            <param>html</param>
-        </outputFormats>
-    </configuration>
+    <verbose>true</verbose>
+    <jvmArgs>
+        <arg>-Xmx6g</arg>
+    </jvmArgs>
+    <targetClasses>
+        <param>org.apache.commons.lang3.*</param>
+    </targetClasses>
+    <targetTests>
+        <param>org.apache.commons.lang3.*</param>
+    </targetTests>
+    <excludedTestClasses>
+        <param>org.apache.commons.lang3.function.ObjectsTest</param>
+        <param>org.apache.commons.lang3.reflect.FieldUtilsTest</param>
+        <param>org.apache.commons.lang3.time.Java15BugFastDateParserTest</param>
+        <param>org.apache.commons.lang3.time.FastDateParserTest</param>
+        <param>org.apache.commons.lang3.SystemPropertiesTest</param>
+    </excludedTestClasses>
+    <outputFormats>
+        <param>XML</param>
+        <param>HTML</param>
+    </outputFormats>
+</configuration>
 </plugin>
 
         <!-- My plugin for mutation coverage ends here -->
