@@ -205,13 +205,13 @@
         </dependency>
     </dependencies>
     <configuration>
-        <!-- <verbose>true</verbose>
-        <jvmArgs>
+        <verbose>true</verbose>
+        <!-- <jvmArgs>
         <arg>-Djava.security.manager=allow</arg>
         </jvmArgs> -->
-           <timeoutConst>4000</timeoutConst> <!-- in ms -->
-           <timeoutFactor>2.0</timeoutFactor>
-           <threads>1</threads>
+           <!-- <timeoutConst>4000</timeoutConst> in ms -->
+           <!-- <timeoutFactor>2.0</timeoutFactor> -->
+           <!-- <threads>1</threads> -->
         <jvmArgs>
             <param>-Xmx4g</param>
         </jvmArgs>
