@@ -193,25 +193,24 @@
 
           <!-- My plugin for Jacoco starts here -->
 
-       <plugin>
+ <plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.8.12</version>
     <executions>
         <execution>
+            <id>prepare-agent-per-test</id>
             <goals>
                 <goal>prepare-agent</goal>
             </goals>
-        </execution>
-        <execution>
-            <id>report</id>
-            <phase>verify</phase>
-            <goals>
-                <goal>report</goal>
-            </goals>
+            <configuration>
+                <propertyName>argLine</propertyName>
+                <destFile>${project.build.directory}/jacoco-per-test/test-${surefire.forkNumber}.exec</destFile>
+            </configuration>
         </execution>
     </executions>
-        </plugin>
+</plugin>
+
 
         <!-- My plugin for Jacoco ends here -->
 
@@ -308,24 +307,28 @@
             </execution>
           </executions>
         </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>plain</id>
-            <configuration>
-              <includes>
-                <include>**/*Test.java</include>
-              </includes>
-              <trimStackTrace>false</trimStackTrace>
-            </configuration>
-          </execution>
-          <!-- <execution> <id>security-manager-test</id> <phase>integration-test</phase> <goals> <goal>test</goal> </goals> <configuration>
-            <includes> <include>**/*Test.java</include> </includes> <argLine>-Djava.security.manager -Djava.security.policy=${basedir}/src/test/resources/java.policy</argLine>
-            </configuration> </execution> -->
-        </executions>
-      </plugin>
+
+      
+    <!-- The new surefire plugin we put for jacoco test cases experiment. Can remove and replace the old one 
+    if this doesnt work. the old one is saved in a text file in GRA folder named as: OLD surefire plugin -->
+
+  <plugin>
+
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.2.5</version> <configuration>
+        <includes>
+            <include>**/*Test.java</include>
+        </includes>
+        <trimStackTrace>false</trimStackTrace>
+
+        <forkCount>1</forkCount>
+        <reuseForks>false</reuseForks>
+        <argLine>@{argLine}</argLine>
+    </configuration>
+</plugin>
+
+      <!-- This surefire plugin ends here -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
