@@ -193,7 +193,9 @@
 
           <!-- My plugin for Jacoco starts here -->
 
-<plugin>
+
+
+<!-- <plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.8.12</version>
@@ -218,7 +220,7 @@
             </goals>
         </execution>
     </executions>
-</plugin>
+</plugin> -->
 
 
 
@@ -227,6 +229,7 @@
 
 
         <!-- My plugin for mutation coverage -->
+
 
 <plugin>
     <groupId>org.pitest</groupId>
@@ -263,6 +266,8 @@
     </outputFormats>
 </configuration>
 </plugin>
+
+
 
         <!-- My plugin for mutation coverage ends here -->
 
@@ -319,11 +324,12 @@
           </executions>
         </plugin>
 
+
       
     <!-- The new surefire plugin we put for jacoco test cases experiment. Can remove and replace the old one 
     if this doesnt work. the old one is saved in a text file in GRA folder named as: OLD surefire plugin -->
 
-<plugin>
+<!-- <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-surefire-plugin</artifactId>
     <version>3.2.5</version>
@@ -360,9 +366,12 @@
             </configuration>
         </execution>
     </executions>
-</plugin>
+</plugin> -->
 
       <!-- This surefire plugin ends here -->
+
+
+
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
@@ -1107,4 +1116,56 @@
       <name>Arturo Bernal</name>
     </contributor>
   </contributors>
+
+
+<!-- Created this profile to overcome challenges of some parent code in pom not letting us configure -->
+
+
+<profiles>
+    <profile>
+        <id>per-test-coverage</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.12</version>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent-for-per-test-coverage</id>
+                            <phase>process-test-classes</phase>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration>
+                                <propertyName>argLine</propertyName>
+                                <destFile>${project.build.directory}/jacoco-per-test/test-${surefire.forkNumber}.exec</destFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.2.5</version>
+                    <configuration>
+                        <includes>
+                            <include>**/*Test.java</include>
+                        </includes>
+                        <trimStackTrace>false</trimStackTrace>
+                        <forkMode>pertest</forkMode>
+                        <reuseForks>false</reuseForks>
+                        <argLine>@{argLine}</argLine>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+</profiles>
+
+
+<!-- MY profile ends here -->
+
+
 </project>
