@@ -670,6 +670,9 @@
 
     <profile>
     <id>per-test-coverage</id>
+    <properties>
+        <surefire.forkCount>1</surefire.forkCount>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -681,7 +684,6 @@
                         <id>prepare-agent</id>
                         <phase>none</phase>
                     </execution>
-
                     <execution>
                         <id>prepare-agent-for-per-test-coverage</id>
                         <phase>process-test-classes</phase>
@@ -705,7 +707,6 @@
                         <include>**/*Test.java</include>
                     </includes>
                     <trimStackTrace>false</trimStackTrace>
-                    <forkMode>pertest</forkMode>
                     <reuseForks>false</reuseForks>
                     <argLine>@{argLine}</argLine>
                 </configuration>
