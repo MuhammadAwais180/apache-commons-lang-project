@@ -193,13 +193,14 @@
 
           <!-- My plugin for Jacoco starts here -->
 
- <plugin>
+<plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.8.12</version>
     <executions>
         <execution>
-            <id>prepare-agent-per-test</id>
+            <id>prepare-agent-for-per-test-coverage</id>
+            <phase>process-test-classes</phase>
             <goals>
                 <goal>prepare-agent</goal>
             </goals>
@@ -208,8 +209,18 @@
                 <destFile>${project.build.directory}/jacoco-per-test/test-${surefire.forkNumber}.exec</destFile>
             </configuration>
         </execution>
+
+        <execution>
+            <id>default-report</id>
+            <phase>none</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
     </executions>
 </plugin>
+
+
 
 
         <!-- My plugin for Jacoco ends here -->
