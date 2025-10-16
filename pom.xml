@@ -676,7 +676,8 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
-                <inherited>false</inherited> <executions>
+                <inherited>false</inherited> 
+                <executions>
                     <execution>
                         <id>prepare-agent-for-per-test-coverage</id>
                         <phase>process-test-classes</phase>
