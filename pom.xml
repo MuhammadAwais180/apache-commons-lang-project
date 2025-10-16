@@ -668,7 +668,7 @@
         </build>
     </profile>
 
-   <!-- <profile>
+    <!-- <profile>
     <id>per-test-coverage</id>
     <build>
         <plugins>
@@ -733,6 +733,8 @@
         </plugins>
     </build>
 </profile>
+
+
 
 
 <!-- MY profile ends here -->
